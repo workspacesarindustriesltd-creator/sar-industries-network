@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 72" role="img" aria-label="SAR Industries Network mark">
+  <defs>
+    <linearGradient id="a" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#ff681f"/>
+      <stop offset="1" stop-color="#d63500"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#a)" d="M32 1 61 17v18L32 51 3 35V17Zm0 13L15 23v6l17 9 17-9v-6Z"/>
+  <path fill="#f4f5f6" d="m3 39 29 16 29-16v16L32 71 3 55Z"/>
+  <path fill="#0a0b0d" d="m20 27 12-7 12 7-12 7Z"/>
+</svg>
