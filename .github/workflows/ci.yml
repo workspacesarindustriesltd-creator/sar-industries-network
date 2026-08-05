@@ -2,16 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [main, phase-2-authentication]
+    branches:
+      - main
+      - phase-2-authentication
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: read
-
-concurrency:
-  group: ci-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   quality:
@@ -19,15 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/sar_industries_network
-      AUTH_SECRET: ci-auth-secret-must-be-at-least-32-characters
-      AUTH_GITHUB_ID: ci-client-id
-      AUTH_GITHUB_SECRET: ci-client-secret
-      BOOTSTRAP_ADMIN_EMAIL: ci-admin@example.com
-      BOOTSTRAP_ORGANIZATION_NAME: SAR INDUSTRIES NETWORK
-      BOOTSTRAP_ORGANIZATION_SLUG: sar-industries-network
-      NEXT_PUBLIC_APP_NAME: SAR INDUSTRIES NETWORK
-      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/sar_industries_network"
+      AUTH_SECRET: "ci-auth-secret-must-be-at-least-32-characters"
+      AUTH_GITHUB_ID: "ci-client-id"
+      AUTH_GITHUB_SECRET: "ci-client-secret"
+      BOOTSTRAP_ADMIN_EMAIL: "ci-admin@example.com"
+      BOOTSTRAP_ORGANIZATION_NAME: "SAR INDUSTRIES NETWORK"
+      BOOTSTRAP_ORGANIZATION_SLUG: "sar-industries-network"
+      NEXT_PUBLIC_APP_NAME: "SAR INDUSTRIES NETWORK"
+      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,7 +34,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: "22"
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
