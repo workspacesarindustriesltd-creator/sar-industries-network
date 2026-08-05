@@ -1,5 +1,8 @@
 import { Dashboard } from "@/components/dashboard/dashboard";
+import { requirePageAccess } from "@/lib/auth-context";
 
-export default function HomePage() {
+export default async function HomePage() {
+  await requirePageAccess();
+
   return <Dashboard />;
 }
