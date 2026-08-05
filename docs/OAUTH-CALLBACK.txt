@@ -1,0 +1,2 @@
+Local callback: http://localhost:3000/api/auth/callback/github
+Production callback: https://YOUR-DOMAIN/api/auth/callback/github
