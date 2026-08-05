@@ -1,10 +1,23 @@
+import { getAppAccess, hasPermission } from "@/lib/auth-context";
 import { dashboardSummary } from "@/lib/dashboard-data";
-import { apiSuccess } from "@/lib/http";
+import { apiError, apiSuccess } from "@/lib/http";
 
-export function GET() {
+export const dynamic = "force-dynamic";
+
+export async function GET() {
+  const access = await getAppAccess();
+
+  if (!access) {
+    return apiError("UNAUTHORIZED", "Authentication is required.", 401);
+  }
+
+  if (!access.membership || !hasPermission(access, "dashboard.read")) {
+    return apiError("FORBIDDEN", "Dashboard access is not permitted.", 403);
+  }
+
   return apiSuccess(dashboardSummary, {
     headers: {
-      "Cache-Control": "private, max-age=30, stale-while-revalidate=60",
+      "Cache-Control": "private, no-store",
     },
   });
 }
