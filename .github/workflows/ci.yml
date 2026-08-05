@@ -20,7 +20,12 @@ jobs:
     timeout-minutes: 20
     env:
       DATABASE_URL: postgresql://postgres:postgres@localhost:5432/sar_industries_network
-      SESSION_SECRET: ci-session-secret-must-be-at-least-32-characters
+      AUTH_SECRET: ci-auth-secret-must-be-at-least-32-characters
+      AUTH_GITHUB_ID: ci-client-id
+      AUTH_GITHUB_SECRET: ci-client-secret
+      BOOTSTRAP_ADMIN_EMAIL: ci-admin@example.com
+      BOOTSTRAP_ORGANIZATION_NAME: SAR INDUSTRIES NETWORK
+      BOOTSTRAP_ORGANIZATION_SLUG: sar-industries-network
       NEXT_PUBLIC_APP_NAME: SAR INDUSTRIES NETWORK
       NEXT_PUBLIC_APP_URL: http://localhost:3000
     steps:
